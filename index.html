@@ -268,7 +268,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2016/06/01/hello-world/">Hello World</a>
+      <a class="article-title" href="/2016/06/01/hello-world/">Ubuntu安装wordpress</a>
     </h1>
   
 
@@ -278,16 +278,16 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h2 id="title-世界，我来迟了"><a href="#title-世界，我来迟了" class="headerlink" title="title: 世界，我来迟了"></a>title: 世界，我来迟了</h2><p>Welcome to <a href="https://totolala.vip/">totolala</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
-
+        <h2 id="关键步骤"><a href="#关键步骤" class="headerlink" title="关键步骤"></a>关键步骤</h2><h3 id="下载wordpress-解压"><a href="#下载wordpress-解压" class="headerlink" title="下载wordpress,解压"></a>下载wordpress,解压</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ wget https://cn.wordpress.org/wordpress-4.5.2-zh_CN.tar.gz</span><br><span class="line">$ tar xvf wordpress-4.5.2-zh_CN.tar.gz</span><br></pre></td></tr></table></figure>
+<h3 id="安装php"><a href="#安装php" class="headerlink" title="安装php"></a>安装php</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ apt-get install php5</span><br></pre></td></tr></table></figure>
+<h3 id="安装mysql"><a href="#安装mysql" class="headerlink" title="安装mysql"></a>安装mysql</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ apt-get install mysql-server-5.6</span><br></pre></td></tr></table></figure>
+<h3 id="安装php-mysql"><a href="#安装php-mysql" class="headerlink" title="安装php-mysql"></a>安装php-mysql</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ apt-get install php5-mysql</span><br></pre></td></tr></table></figure>
+<h3 id="安装vsftpd（这一步最麻烦，配置多）"><a href="#安装vsftpd（这一步最麻烦，配置多）" class="headerlink" title="安装vsftpd（这一步最麻烦，配置多）"></a>安装vsftpd（这一步最麻烦，配置多）</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ apt-get install vsftpd</span><br></pre></td></tr></table></figure>
+<p>新建”/home/uftp”目录作为用户主目录 :<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ mkdir /home/uftp</span><br></pre></td></tr></table></figure></p>
+<p>新建用户uftp并设置密码：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ useradd <span class="_">-d</span> /home/uftp <span class="_">-s</span> /bin/bash uftp</span><br><span class="line">$ passwd uftp</span><br></pre></td></tr></table></figure></p>
+<p>修改配置文件/etc/vsftpd.conf,添加”userlist_deny=NO    userlist_enable=YES  userlist_file=/etc/allowed_users  seccomp_sandbox=NO”   使文件中的”local_enable=YES”   打开注释write_enable=YES</p>
+<p>新建/etc/allowed_users文件：将uftp写入其中<br>如果uftp在/etc/ftpusers中，删除之</p>
+<h3 id="重启服务"><a href="#重启服务" class="headerlink" title="重启服务"></a>重启服务</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ service vsftpd restart</span><br></pre></td></tr></table></figure>
       
     </div>
     
