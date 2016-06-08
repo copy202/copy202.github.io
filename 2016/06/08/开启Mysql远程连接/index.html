@@ -3,17 +3,27 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Archives | totolala</title>
+  <title>开启Mysql远程连接 | totolala</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="天下之大，不可掩人耳目；吾心虽然小，尤可绵里藏针">
-<meta property="og:type" content="website">
-<meta property="og:title" content="totolala">
-<meta property="og:url" content="http://totolala.vip/archives/index.html">
+  <meta name="description" content="遇到mysql无法进行远程连接，主要从以下几个地方开始排查
+mysql是否赋予远程登录权限在开始前，需要检查一下localhost下是否能够连接1$ netstat -tlnp
+查看3306端口是否处于监听状态
+进入mysql,赋予权限123$ mysql -u root -p$ GRANT ALL PRIVILEGES ON *.* TO &apos;root&apos;@&apos;%&apos; IDENTIFIED BY &apos;ro">
+<meta property="og:type" content="article">
+<meta property="og:title" content="开启Mysql远程连接">
+<meta property="og:url" content="http://totolala.vip/2016/06/08/开启Mysql远程连接/index.html">
 <meta property="og:site_name" content="totolala">
-<meta property="og:description" content="天下之大，不可掩人耳目；吾心虽然小，尤可绵里藏针">
+<meta property="og:description" content="遇到mysql无法进行远程连接，主要从以下几个地方开始排查
+mysql是否赋予远程登录权限在开始前，需要检查一下localhost下是否能够连接1$ netstat -tlnp
+查看3306端口是否处于监听状态
+进入mysql,赋予权限123$ mysql -u root -p$ GRANT ALL PRIVILEGES ON *.* TO &apos;root&apos;@&apos;%&apos; IDENTIFIED BY &apos;ro">
+<meta property="og:updated_time" content="2016-06-08T10:18:25.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="totolala">
-<meta name="twitter:description" content="天下之大，不可掩人耳目；吾心虽然小，尤可绵里藏针">
+<meta name="twitter:title" content="开启Mysql远程连接">
+<meta name="twitter:description" content="遇到mysql无法进行远程连接，主要从以下几个地方开始排查
+mysql是否赋予远程登录权限在开始前，需要检查一下localhost下是否能够连接1$ netstat -tlnp
+查看3306端口是否处于监听状态
+进入mysql,赋予权限123$ mysql -u root -p$ GRANT ALL PRIVILEGES ON *.* TO &apos;root&apos;@&apos;%&apos; IDENTIFIED BY &apos;ro">
   
     <link rel="alternative" href="/atom.xml" title="totolala" type="application/atom+xml">
   
@@ -38,8 +48,8 @@
           fancybox: true,
           animate: true,
           isHome: false,
-          isPost: false,
-          isArchive: true,
+          isPost: true,
+          isArchive: false,
           isTag: false,
           isCategory: false,
           open_in_new: false
@@ -246,77 +256,193 @@
         </header>                
     </div>
 </nav>
-      <div class="body-wrap">
+      <div class="body-wrap"><article id="post-开启Mysql远程连接" class="article article-type-post" itemscope itemprop="blogPost">
   
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2016" class="archive-year">2016</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a href="/2016/06/08/开启Mysql远程连接/" class="archive-article-date">
-      <time datetime="2016-06-08T09:57:40.000Z" itemprop="datePublished">06-08</time>
+    <div class="article-meta">
+      <a href="/2016/06/08/开启Mysql远程连接/" class="article-date">
+      <time datetime="2016-06-08T09:57:40.000Z" itemprop="datePublished">2016-06-08</time>
 </a>
-        </div>
-         
+    </div>
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/06/08/开启Mysql远程连接/">开启Mysql远程连接</a>
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      开启Mysql远程连接
     </h1>
   
 
-        <div class="article-info info-on-archive">
-          
+      </header>
+      
+      <div class="article-info article-info-post">
+        
 
-          
-        </div>
+        
         <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
+      </div>
+      
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a href="/2016/06/01/hello-world/" class="archive-article-date">
-      <time datetime="2016-06-01T13:10:00.000Z" itemprop="datePublished">06-01</time>
-</a>
-        </div>
-         
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/06/01/hello-world/">Ubuntu安装wordpress</a>
-    </h1>
-  
-
-        <div class="article-info info-on-archive">
+    <div class="article-entry" itemprop="articleBody">
+      
           
+        <p>遇到mysql无法进行远程连接，主要从以下几个地方开始排查</p>
+<h1 id="mysql是否赋予远程登录权限"><a href="#mysql是否赋予远程登录权限" class="headerlink" title="mysql是否赋予远程登录权限"></a><font color="white">mysql是否赋予远程登录权限</font></h1><p>在开始前，需要检查一下localhost下是否能够连接<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ netstat -tlnp</span><br></pre></td></tr></table></figure></p>
+<p>查看3306端口是否处于监听状态</p>
+<p>进入mysql,赋予权限<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ mysql -u root -p</span><br><span class="line">$ GRANT ALL PRIVILEGES ON *.* TO <span class="string">'root'</span>@<span class="string">'%'</span> IDENTIFIED BY <span class="string">'root3306'</span> WITH GRANT OPTION;</span><br><span class="line">$ flush privileges;   <span class="comment">#非常重要</span></span><br></pre></td></tr></table></figure></p>
+<h1 id="my-conf中绑定的地址是否正确"><a href="#my-conf中绑定的地址是否正确" class="headerlink" title="my.conf中绑定的地址是否正确"></a><font color="white">my.conf中绑定的地址是否正确</font></h1><p>检查my.conf配置文件中<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[mysqld]</span><br><span class="line"><span class="built_in">bind</span>-address = 127.0.0.1</span><br><span class="line">变更为</span><br><span class="line"><span class="built_in">bind</span>-address = 本机公网ip</span><br></pre></td></tr></table></figure></p>
+<h1 id="查看防火墙是否拦截"><a href="#查看防火墙是否拦截" class="headerlink" title="查看防火墙是否拦截"></a><font color="white">查看防火墙是否拦截</font></h1><p>查看当前端口状态<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ iptables -L -n | grep 3306</span><br></pre></td></tr></table></figure></p>
+<p>如果没有结果，需要强制添加3306端口开放<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ firewall-cmd --add-port=3306/tcp --permanent</span><br><span class="line">$ firewall-cmd --reload</span><br></pre></td></tr></table></figure></p>
+<p>以上是centos7方式，如果遇到centos6，请用下面的命令：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ iptables -I INPUT -p tcp -m tcp --dport 3306 -j ACCEPT</span><br><span class="line">$ service iptables save</span><br></pre></td></tr></table></figure></p>
 
-          
-        </div>
-        <div class="clearfix"></div>
-    </header>
+      
+    </div>
+    
   </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2016/06/08/开启Mysql远程连接/">开启Mysql远程连接</a></p>
+        <p><span>文章作者:</span><a href="/" title="访问 Fenggw 的个人博客">Fenggw</a></p>
+        <p><span>发布时间:</span>2016年06月08日 - 17时57分</p>
+        <p><span>最后更新:</span>2016年06月08日 - 18时18分</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2016/06/08/开启Mysql远程连接/" title="开启Mysql远程连接">http://totolala.vip/2016/06/08/开启Mysql远程连接/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://totolala.vip/2016/06/08/开启Mysql远程连接/　　作者: Fenggw" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script src="/js/clipboard.min.js"></script>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target = "_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+<nav id="article-nav">
+  
+  
+    <a href="/2016/06/01/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Ubuntu安装wordpress</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
 </article>
-  
-  
-    </div></section>
-  
+
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#mysql是否赋予远程登录权限"><span class="toc-number">1.</span> <span class="toc-text">mysql是否赋予远程登录权限</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#my-conf中绑定的地址是否正确"><span class="toc-number">2.</span> <span class="toc-text">my.conf中绑定的地址是否正确</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#查看防火墙是否拦截"><span class="toc-number">3.</span> <span class="toc-text">查看防火墙是否拦截</span></a></li></ol>
+</div>
+<input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script>
+    var valueHide = "隐藏目录";
+    var valueShow = "显示目录";
+
+    if ($(".left-col").is(":hidden")) {
+        $("#tocButton").attr("value", valueShow);
+    }
+    $("#tocButton").click(function() {
+        if ($("#toc").is(":hidden")) {
+            $("#tocButton").attr("value", valueHide);
+            $("#toc").slideDown(320);
+        }
+        else {
+            $("#tocButton").attr("value", valueShow);
+            $("#toc").slideUp(350);
+        }
+    })
+    if ($(".toc").length < 1) {
+        $("#toc, #tocButton").hide();
+    }
+</script>
+
+
+
+
+
+<div class="bdsharebuttonbox">
+	<a href="#" class="fx fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+	<a href="#" class="fx fa-weixin bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+	<a href="#" class="fx fa-qq bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+	<a href="#" class="fx fa-facebook-official bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+	<a href="#" class="fx fa-twitter bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+	<a href="#" class="fx fa-linkedin bds_linkedin" data-cmd="linkedin" title="分享到linkedin"></a>
+	<a href="#" class="fx fa-files-o bds_copy" data-cmd="copy" title="分享到复制网址"></a>
+</div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+
+
+
+    
+      <div class="duoshuo" id="comments">
+    <!-- 多说评论框 start -->
+    <div class="ds-thread" data-thread-key="2016/06/08/开启Mysql远程连接/" data-title="开启Mysql远程连接" data-url="http://totolala.vip/2016/06/08/开启Mysql远程连接/"></div>
+    <!-- 多说评论框 end -->
+    <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+    <script type="text/javascript">
+    var duoshuoQuery = {short_name:"null"};
+    (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = '/js/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0] 
+         || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+    </script>
+    <!-- 多说公共JS代码 end -->
+</div>
 
     
 
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
+        
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+        
+            <a href="/2016/06/01/hello-world/" title="下一篇: Ubuntu安装wordpress">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2016/06/08/开启Mysql远程连接/">开启Mysql远程连接</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/01/hello-world/">Ubuntu安装wordpress</a></li></ul>
+    <script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+    <script>
+        $(".post-list").addClass("toc-article");
+        $(".post-list-item a").attr("target","_blank");
+        $("#post-nav-button > a:nth-child(2)").click(function() {
+            $(".fa-bars, .fa-times").toggle();
+            $(".post-list").toggle(300);
+            if ($(".toc").length > 0) {
+                $("#toc, #tocButton").toggle(200, function() {
+                    if ($(".switch-area").is(":visible")) {
+                        $("#tocButton").attr("value", valueHide);
+                        }
+                    })
+            }
+            else {
+            }
+        })
+    </script>
+
+
+
+    <script>
+        
+    </script>
 </div>
       <footer id="footer">
     <div class="outer">
@@ -381,17 +507,6 @@
         };
     })
 </script>
-
-    <button class="hide-labels">TAG 开关</button>
-    <script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js">
-    </script>
-    <script>
-        $(document).ready(function() {
-            $("button").click(function() {
-                $(".article-info").toggle(200);
-            });
-        });
-    </script>
 
 <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
 </script>

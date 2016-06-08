@@ -251,6 +251,67 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-开启Mysql远程连接" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/06/08/开启Mysql远程连接/" class="article-date">
+      <time datetime="2016-06-08T09:57:40.000Z" itemprop="datePublished">2016-06-08</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/06/08/开启Mysql远程连接/">开启Mysql远程连接</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>遇到mysql无法进行远程连接，主要从以下几个地方开始排查</p>
+<h1 id="mysql是否赋予远程登录权限"><a href="#mysql是否赋予远程登录权限" class="headerlink" title="mysql是否赋予远程登录权限"></a><font color="white">mysql是否赋予远程登录权限</font></h1><p>在开始前，需要检查一下localhost下是否能够连接<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ netstat -tlnp</span><br></pre></td></tr></table></figure></p>
+<p>查看3306端口是否处于监听状态</p>
+<p>进入mysql,赋予权限<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ mysql -u root -p</span><br><span class="line">$ GRANT ALL PRIVILEGES ON *.* TO <span class="string">'root'</span>@<span class="string">'%'</span> IDENTIFIED BY <span class="string">'root3306'</span> WITH GRANT OPTION;</span><br><span class="line">$ flush privileges;   <span class="comment">#非常重要</span></span><br></pre></td></tr></table></figure></p>
+<h1 id="my-conf中绑定的地址是否正确"><a href="#my-conf中绑定的地址是否正确" class="headerlink" title="my.conf中绑定的地址是否正确"></a><font color="white">my.conf中绑定的地址是否正确</font></h1><p>检查my.conf配置文件中<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[mysqld]</span><br><span class="line"><span class="built_in">bind</span>-address = 127.0.0.1</span><br><span class="line">变更为</span><br><span class="line"><span class="built_in">bind</span>-address = 本机公网ip</span><br></pre></td></tr></table></figure></p>
+<h1 id="查看防火墙是否拦截"><a href="#查看防火墙是否拦截" class="headerlink" title="查看防火墙是否拦截"></a><font color="white">查看防火墙是否拦截</font></h1><p>查看当前端口状态<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ iptables -L -n | grep 3306</span><br></pre></td></tr></table></figure></p>
+<p>如果没有结果，需要强制添加3306端口开放<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ firewall-cmd --add-port=3306/tcp --permanent</span><br><span class="line">$ firewall-cmd --reload</span><br></pre></td></tr></table></figure></p>
+<p>以上是centos7方式，如果遇到centos6，请用下面的命令：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ iptables -I INPUT -p tcp -m tcp --dport 3306 -j ACCEPT</span><br><span class="line">$ service iptables save</span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
